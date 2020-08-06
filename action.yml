@@ -1,0 +1,36 @@
+name: Run Commands via SSH
+author: flaavius
+description: Github Action to run commands to a remote server using SSH
+inputs:
+  command:
+    description: "Command to run on the remote server"
+    required: true
+  host:
+    description: "Hostname or IP address of the server."
+    required: false
+    default: "localhost"
+  username:
+    description: "Username for authentication."
+    required: false
+  port:
+    description: "Port number of the server."
+    required: false
+    default: "22"
+  privateKey:
+    description: "File Location or string that contains a private key for either key-based or hostbased user authentication (OpenSSH format)"
+    required: false
+  password:
+    description: "Password for password-based user authentication."
+    required: false
+  passphrase:
+    description: "For an encrypted private key, this is the passphrase used to decrypt it."
+    required: false
+  tryKeyboard:
+    description: "Try keyboard-interactive user authentication if primary user authentication method fails."
+    required: false
+runs:
+  using: "node12"
+  main: "dist/index.js"
+branding:
+  color: "purple"
+  icon: "copy"

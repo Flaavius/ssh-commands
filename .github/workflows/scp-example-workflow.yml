@@ -1,0 +1,32 @@
+name: scp copy folder to remote via SSH
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: setup demo
+        run: |
+          mkdir test
+          touch test/oof.txt
+      - name: Copy folder content recursively to remote
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: test
+          remote: scp/directory
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
+      - name: Copy single file to remote
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: test/oof.txt
+          remote: scp/single/readme.md
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
+        env:
+          CI: true

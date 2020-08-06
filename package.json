@@ -1,0 +1,40 @@
+{
+  "name": "@flaavius/github-action-scp",
+  "version": "0.6.0",
+  "description": "Copy a folder to a remote server using SSH.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flaavius/github-action-ssh"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "pack": "ncc build"
+  },
+  "bin": {
+    "github-action-ssh": "dist/index.js"
+  },
+  "preferGlobal": false,
+  "keywords": [
+    "typescript",
+    "github",
+    "github-actions",
+    "actions",
+    "ssh"
+  ],
+  "author": "flaavius",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "node-ssh": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.12",
+    "@types/node-ssh": "^7.0.0",
+    "@zeit/ncc": "^0.20.5",
+    "prettier": "^1.19.1",
+    "typescript": "3.8.3"
+  }
+}
